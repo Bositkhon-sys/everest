@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Keyboard Input for chat-bubble</title>
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<link rel="stylesheet" media="all" href="../component/styles/setup.css">
+	<link rel="stylesheet" media="all" href="../component/styles/says.css">
+	<link rel="stylesheet" media="all" href="../component/styles/reply.css">
+	<link rel="stylesheet" media="all" href="../component/styles/typing.css">
+	<link rel="stylesheet" media="all" href="../component/styles/input.css">
+	<style>
+	body {
+		background: #dcdde0;
+	}
+	.bubble-container {
+		height: 100vh;
+	}
+	.bubble-container .input-wrap textarea {
+		margin: 0;
+		width: calc(100% - 30px);
+	}
+	</style>
+</head>
+<body>
+
+<div id="chat"></div>
+
+
+<script src="../component/Bubbles.js"></script>
+<script>
+
+var chatWindow = new Bubbles(document.getElementById("chat"), "chatWindow", {
+
+  inputCallbackFn: function(o) {
+    // add error conversation block & recall it if no answer matched
+    var miss = function() {
+      chatWindow.talk(
+        {
+          "i-dont-get-it": {
+            says: [
+              "Sorry, I don't get it 😕. Pls repeat? Or you can just click below 👇"
+            ],
+            reply: o.convo[o.standingAnswer].reply
+          }
+        },
+        "i-dont-get-it"
+      )
+    }
+
+    // do this if answer found
+    var match = function(key) {
+      setTimeout(function() {
+        chatWindow.talk(convo, key) // restart current convo from point found in the answer
+      }, 600)
+    }
+
+    // sanitize text for search function
+    var strip = function(text) {
+      return text.toLowerCase().replace(/[\s.,\/#!$%\^&\*;:{}=\-_'"`~()]/g, "")
+    }
+
+    // search function
+    var found = false
+    o.convo[o.standingAnswer].reply.forEach(function(e, i) {
+      strip(e.question).includes(strip(o.input)) && o.input.length > 0
+        ? (found = e.answer)
+        : found ? null : (found = false)
+    })
+    found ? match(found) : miss()
+  }
+}) // done setting up chat-bubble
+
+var convo = {
+  ice: {
+    says: ["Hi", "My Name is Bositkhon Gulomkhonov", "How can I help you?"],
+    reply: [
+      {
+        question: "",
+        answer: "contact"
+      },
+      {
+        question: "",
+        answer: "ice-cream"
+      }
+    ]
+  },
+  contact: {
+    says: ["dou you want to contact the Ceo", "dou you want to contact the Admin","dou you want to contact the support-team"],
+    reply: [
+      {
+        question: "Start Over",
+        answer: "ice"
+      }
+    ]
+  },
+  "ice-cream": {
+    says: ["what kind of Problems do have? MF"],
+    reply: [
+      {
+        question: "Start Over",
+        answer: "ice"
+      }
+    ]
+  }
+}
+
+chatWindow.talk(convo)
+</script>
+</body>

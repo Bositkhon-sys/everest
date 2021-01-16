@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="author" content="www.frebsite.nl" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <title>mmenu - Demo</title>
+
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="css/alarm.css" />
+        <link rel="stylesheet" href="../mburger/mburger.css" />
+        <link rel="stylesheet" href="../mmenu-light/mmenu-light.css" />
+        <link rel="stylesheet" href="../mmenu/mmenu.css" />
+        <link rel="stylesheet" href="../mhead/jquery.mhead.css" />
+        <style>
+            .Hidden {
+                display: none;
+            }
+
+            a.remove {
+                background: #e34545;
+                border-radius: 20px;
+                color: #fff !important;
+                font-weight: bold;
+                text-align: center;
+                vertical-align: middle;
+                line-height: 21px;
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                margin: 0 30px 0 -50px;
+
+                -webkit-transition: margin .5s ease;
+                transition: margin .5s ease;
+            }
+            .removing a.remove {
+                margin: 0 10px 0 0;
+            }
+            .mm-navbar:first-child {
+                --mm-color-background: #e34545;
+            }
+            .mm-navbar p {
+                display: block;
+                color: #333 !important;
+                padding: 30px;
+                margin: 0;
+            }
+            .mm-navbar a {
+                color: #fff !important;
+            }
+
+            a.mm-navbar__btn {
+                font-weight: bold;
+                width: 60px;
+            }
+            a.mm-navbar__btn:before,
+            a.mm-navbar__btn:after {
+                content: none !important;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 10px;
+            }
+            select {
+                width: 45%;
+                float: left;
+            }
+            select + select {
+                float: right;
+            }
+            a.button {
+                width: auto;
+                position: absolute;
+                bottom: 20px;
+                left: 20px;
+                right: 20px;
+            }
+        </style>    </head>
+    <body>
+        <div id="page">
+                                </div>
+
+        <nav id="menu">
+            <div id="app">
+
+                <ul id="alarms">
+                    <li class="Divider">Alarms</li>
+                    <li>
+                        <span><em class="Counter">07:00</em>
+                            <a href="#" class="remove">&times;</a>Wake up
+                        </span>
+                        <input type="checkbox" checked class="Toggle" />
+                    </li>
+                    <li>
+                        <span><em class="Counter">07:45</em>
+                            <a href="#" class="remove">&times;</a>Walk the dog
+                        </span>
+                        <input type="checkbox" class="Toggle" />
+                    </li>
+                    <li>
+                        <span><em class="Counter">08:00</em>
+                            <a href="#" class="remove">&times;</a>Go to work
+                        </span>
+                        <input type="checkbox" class="Toggle" />
+                    </li>
+                    <li>
+                        <span><em class="Counter">12:30</em>
+                            <a href="#" class="remove">&times;</a>Lunchmeeting
+                        </span>
+                        <input type="checkbox" checked class="Toggle" />
+                    </li>
+                    <li>
+                        <span><em class="Counter">17:30</em>
+                            <a href="#" class="remove">&times;</a>Do groceries
+                        </span>
+                        <input type="checkbox" checked class="Toggle" />
+                    </li>
+                    <li>
+                        <span><em class="Counter">18:30</em>
+                            <a href="#" class="remove">&times;</a>Have diner
+                        </span>
+                        <input type="checkbox" class="Toggle" />
+                    </li>
+                    <li>
+                        <span><em class="Counter">19:00</em>
+                            <a href="#" class="remove">&times;</a>Wash the dishes
+                        </span>
+                        <input type="checkbox" class="Toggle" />
+                    </li>
+                    <li>
+                        <span><em class="Counter">20:30</em>
+                            <a href="#" class="remove">&times;</a>Watch the game
+                        </span>
+                        <input type="checkbox" checked class="Toggle" />
+                    </li>
+                    <li>
+                        <span><em class="Counter">23:00</em>
+                            <a href="#" class="remove">&times;</a>Go to sleep
+                        </span>
+                        <input type="checkbox" class="Toggle" />
+                    </li>
+                </ul>
+
+                <!-- navbar info -->
+                <div class="Hidden">
+                    <a class="Prev" href="#remove">&times;</a>
+                    <a class="Next" href="#new">new</a>
+                </div>
+            </div>
+            <div id="new">
+                <p class="mm-panel__content">
+                    <br />
+                    <label for="inp-name">Name:</label>
+                    <input type="text" id="inp-name" placeholder="Alarm name" />
+                    <br />
+                    <label for="inp-hours">Time:</label>
+                    <select id="inp-hours">
+                <option value="00">00</option>
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                    </select>
+                    <select id="inp-minutes">
+                <option value="00">00</option>
+                <option value="15">05</option>
+                <option value="30">10</option>
+                <option value="45">15</option>
+                <option value="00">20</option>
+                <option value="15">25</option>
+                <option value="30">35</option>
+                <option value="45">40</option>
+                <option value="45">45</option>
+                <option value="45">50</option>
+                <option value="45">55</option>
+                    </select>
+                    <br style="clear: both;" />
+
+                    <a href="#app" class="button">Create new alarm</a>
+                </p>
+
+                <!-- navbar info -->
+                <div class="Hidden">
+                    <span class="Title">New alarm</span>
+                    <a class="Next" href="#app">cancel</a>
+                </div>
+            </div>
+        </nav>
+        <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="../mhead/jquery.mhead.js?v=8.5.0"></script>
+        <script src="js/playground.js"></script>
+        <script src="../mmenu/mmenu.js?v="></script>
+        <script src="../mmenu/mmenu.polyfills.js?v="></script>        <script>
+            $(function() {
+
+                new Mmenu("#menu", {
+                    offCanvas    : false,
+                    dividers     : {
+                        add   : false,
+                        fixed : true
+                    },
+                    extensions    : [ "theme-white" ],
+                    navbar        : {
+                        title         : "Demo app",
+                        titleLink    : "none"
+                    },
+                    navbars        : [{
+                        content     : [ "prev", "title", "next" ]
+                    }, {
+                        content     : "<p><strong>This is a demo app.</strong><br />It demonstrates customized navbar buttons and dynamic listitems.</p>"
+                    }]}, {});
+
+                $(".mh-head.Sticky").mhead({
+                    scroll: {
+                        hide: 200
+                    }
+                });
+
+                $('body').on( 'click',
+                    'a[href^="#/"]',
+                    function() {
+                        alert( "Thank you for clicking, but that's a demo link." );
+                        return false;
+                    }
+                );
+                var $menu = $("#menu"),
+                    API = $("#menu")[0].mmApi;
+
+                var $app        = $("#app"),
+                    $alarms        = $("#alarms"),
+                    $inpname     = $("#inp-name"),
+                    $inphours    = $("#inp-hours"),
+                    $inpminutes    = $("#inp-minutes");
+
+                var appPanel = true;
+                API.bind( "openPanel:start", function( panel ) {
+                    if ( $(panel).is( '#new') )
+                    {
+                        $inpname.val( '' );
+                        $inphours.val( 12 );
+                        $inpminutes.val( '00' );
+                    }
+                    $menu.removeClass( 'removing' );
+                });
+
+                $('#menu')
+                    .find( '.mm-btn_prev' )
+                    .on( 'click',
+                        function( e )
+                        {
+                            if ( $menu.find( '.mm-panel_opened' ).is( '#app' ) )
+                            {
+                                $menu.toggleClass( 'removing' );
+                                $(this).html( $menu.hasClass( 'removing' ) ? 'done' : '&times;' );
+                            }
+                        }
+                    );
+
+                $alarms
+                    .on( 'click',
+                        '.remove',
+                        function( e )
+                        {
+                            e.preventDefault();
+                            $(this).closest( 'li' ).fadeOut(function() {
+                                $(this).css({
+                                    display: "flex",
+                                    opacity: 0
+                                })
+                                .slideUp(function() {
+                                    $(this).remove();
+                                });
+                            });
+                        }
+                    );
+
+                var id = 0;
+                $('#new').find( '.button' )
+                    .on( 'click',
+                        function( e )
+                        {
+                            e.preventDefault();
+                            id++;
+
+                            var str  = '<li class="mm-listitem">';
+                                str += '<span class="mm-listitem__text">';
+                                str += '<em class="mm-counter">' + $inphours.val() + ':' + $inpminutes.val() + '</em>';
+                                str += '<a href="#" class="remove">&times;</a>';
+                                str += $inpname.val();
+                                str += '</span>';
+                                str += '<input type="checkbox" id="alarm-' + id + '" class="mm-toggle" />';
+                                str += '</li>';
+
+                            $alarms.append( str );
+
+                            $alarms.children().sort(function( a, b ) {
+                                return $(a).find( '.mm-counter' ).text() > $(b).find( '.mm-counter' ).text();
+                            }).appendTo( $alarms );
+                        }
+                    )            });
+        </script>
+    </body>
+</html>

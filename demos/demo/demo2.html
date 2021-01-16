@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="author" content="www.frebsite.nl" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <title>mmenu - Demo</title>
+
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="css/demo2.css" />
+        <link rel="stylesheet" href="../mburger/mburger.css" />
+        <link rel="stylesheet" href="../mmenu-light/mmenu-light.css" />
+        <link rel="stylesheet" href="../mmenu/mmenu.css" />
+        <link rel="stylesheet" href="../mhead/jquery.mhead.css" />
+        <style>
+            .mm-menu {
+                height: calc( 100% - 40px ) !important;
+                --mm-color-background: #3ba5df;
+                --mm-listitem-size: 50px;
+            }
+            .mm-navbars_top {
+                --mm-color-background: #4bb5ef;
+                border-bottom: none !important;
+            }
+            .mm-navbar {
+                color: #fff !important;
+                font-size: 14px;
+                font-weight: bold;
+            }
+            .mm-navbar input {
+                text-align: center;
+            }
+            .mm-navbar:first-child {
+                align-content: center;
+                justify-content: center;
+                align-items: center;
+            }
+            .mm-navbar img {
+                flex-grow: 0;
+                opacity: 0.6;
+                border: 1px solid #fff;
+                border-radius: 50px;
+                width: 100px;
+                height: 100px;
+                padding: 10px;
+                margin: 0 10px;
+            }
+            .mm-navbar .fa {
+                flex-grow: 0;
+                border: 1px solid rgba(255, 255, 255, 0.6);
+                border-radius: 30px;
+                color: rgba(255, 255, 255, 0.8) !important;
+                font-size: 16px !important;
+                line-height: 50px;
+                width: 50px;
+                height: 50px;
+                padding: 0;
+            }
+            .mm-navbar .fa:hover {
+                border-color: #fff;
+                color: #fff !important;
+            }
+
+            .mm-panels > .mm-panel:after {
+                content: none;
+                display: none;
+            }
+            .mm-panels > .mm-panel > .mm-listview {
+                margin-top: 10px !important;
+            }
+
+            .mm-listview {
+                font-size: 16px;
+            }
+            .mm-listitem:last-child:after {
+                content: none;
+                display: none;
+            }
+            .mm-listitem a,
+            .mm-listitem span {
+                color: rgba(255, 255, 255, 0.7);
+                text-align: center;
+                padding-right: 20px !important;
+            }
+            .mm-listitem a:hover,
+            .mm-listitem a:hover + span {
+                color: #fff;
+            }
+        </style>    </head>
+    <body>
+        <div id="page">
+
+            <div class="mh-head Sticky">
+                <span class="mh-btns-left">
+                    <a href="#menu" class="fa fa-bars"></a>
+                    <a href="#page" class="fa fa-close"></a>
+                </span>
+                <span class="mh-text">Contact</span>
+            </div>
+            <div class="content">
+                <p><strong>This is a demo.</strong><br />
+                    Click the menu icon to open a custom styled menu.</p>
+            </div>        </div>
+
+            <nav id="menu">
+                <ul id="panel-menu">
+                    <li><a href="#/">Home</a></li>
+                    <li><a href="#/work">Our work</a></li>
+                    <li><span>About us</span>
+                        <ul>
+                            <li><a href="#/about/history">History</a></li>
+                            <li><span>The team</span>
+                                <ul>
+                                    <li><a href="#/about/team/management">Management</a></li>
+                                    <li><a href="#/about/team/sales">Sales</a></li>
+                                    <li><a href="#/about/team/development">Development</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><span>Services</span>
+                        <ul>
+                            <li><a href="#/services/design">Design</a></li>
+                            <li><a href="#/services/development">Development</a></li>
+                            <li><a href="#/services/marketing">Marketing</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#/contact">Contact</a></li>
+                </ul>
+            </nav>
+        <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="../mhead/jquery.mhead.js?v=8.5.0"></script>
+        <script src="js/playground.js"></script>
+        <script src="../mmenu/mmenu.js?v="></script>
+        <script src="../mmenu/mmenu.polyfills.js?v="></script>        <script>
+            $(function() {
+
+                new Mmenu("#menu", {
+        extensions     : [ "position-bottom", "fullscreen", "theme-black",  "border-full" ],
+        navbars        : [{
+            height     : 2,
+            content : [
+                '<a href="#/" class="fa fa-phone"></a>',
+                '<img src="img/profile-2-w.png" />',
+                '<a href="#/" class="fa fa-envelope"></a>'
+            ]
+        }, {
+            content: [ "searchfield" ]
+        }, {
+            content : ["prev","title"]
+        }]}, {});
+
+                $(".mh-head.Sticky").mhead({
+                    scroll: {
+                        hide: 200
+                    }
+                });
+
+                $('body').on( 'click',
+                    'a[href^="#/"]',
+                    function() {
+                        alert( "Thank you for clicking, but that's a demo link." );
+                        return false;
+                    }
+                );            });
+        </script>
+    </body>
+</html>
+
